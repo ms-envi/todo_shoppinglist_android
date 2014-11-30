@@ -19,16 +19,22 @@
         android:weightSum="9" >
         
         <Spinner
-                  android:id="@+id/spinner1"
+                  android:id="@+id/food_category"
                   android:layout_width="match_parent"
                   android:layout_height="0dp"
-                  android:layout_weight="1" />
+                  android:layout_weight="1" 
+                  android:prompt="@string/select_category"
+                  android:entries="@array/category_array"
+                  
+                  />
         
          <Spinner
-                  android:id="@+id/spinner2"
+                  android:id="@+id/food_item"
                   android:layout_width="match_parent"
                   android:layout_height="0dp"
-                  android:layout_weight="1" />
+                  android:layout_weight="1" 
+                  android:prompt="@string/select_item"
+                  />
 
          <EditText
              android:id="@+id/editText1"
@@ -54,7 +60,7 @@
                  android:layout_column="0"
                  android:layout_gravity="left|top"
                  android:layout_row="0"
-                 android:text="Button" />
+                 android:text="@string/clear_btn" />
 
              <Button
                  android:id="@+id/button2"
@@ -63,7 +69,7 @@
                  android:layout_column="1"
                  android:layout_gravity="fill_horizontal|top"
                  android:layout_row="0"
-                 android:text="Button" />
+                 android:text="@string/add_btn" />
 
          </GridLayout>
 
@@ -73,7 +79,7 @@
              android:layout_height="0dp"
              android:layout_weight="1"
              android:layout_gravity="center_vertical"
-             android:text="Button" />
+             android:text="@string/baking_btn" />
          
           <Button
              android:id="@+id/button4"
@@ -81,28 +87,28 @@
              android:layout_height="0dp"
              android:layout_weight="1"
              android:layout_gravity="center_vertical"
-             android:text="Button" />
+             android:text="@string/dairy_btn" />
            <Button
              android:id="@+id/button5"
              android:layout_width="fill_parent"
              android:layout_height="0dp"
              android:layout_weight="1"
              android:layout_gravity="center_vertical"
-             android:text="Button" />
+             android:text="@string/meat_btn" />
             <Button
              android:id="@+id/button6"
              android:layout_width="fill_parent"
              android:layout_height="0dp"
              android:layout_weight="1"
              android:layout_gravity="center_vertical"
-             android:text="Button" />
+             android:text="@string/greens_btn" />
               <Button
              android:id="@+id/button7"
              android:layout_width="fill_parent"
              android:layout_height="0dp"
              android:layout_weight="1"
              android:layout_gravity="center_vertical"
-             android:text="Button" />
+             android:text="@string/others_btn" />
 
             
     </LinearLayout>
