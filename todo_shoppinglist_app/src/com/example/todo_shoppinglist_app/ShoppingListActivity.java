@@ -43,7 +43,7 @@ public class ShoppingListActivity extends Activity {
     
     private void pickItem (){
     	selectItem = (Spinner)findViewById(R.id.food_item);
-    
+    	
     	
     	
     	

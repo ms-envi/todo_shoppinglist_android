@@ -19,7 +19,7 @@ public class CustomOnItemSelectedListener implements OnItemSelectedListener {
 		switch (position) {
 
 		case 1:
-			position = 1;
+			position = 0;
 			List<String> bakeryList = new ArrayList<String>();
 			bakeryList.add("Bread");
 			bakeryList.add("Roll");
