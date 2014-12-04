@@ -20,18 +20,30 @@ public class CustomOnItemSelectedListener implements OnItemSelectedListener {
 
 		case 1:
 			position = 0;
-			List<String> bakeryList = new ArrayList<String>();
-			bakeryList.add("Bread");
-			bakeryList.add("Roll");
-			bakeryList.add("Rice");
-			bakeryList.add("Pasta");
-			bakeryList.add("Flour");
-			ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
-					parent.getContext(), android.R.layout.simple_spinner_item,
-					bakeryList);
-			adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			
 			
 
+			break;
+			
+		case 2:
+			position =1;
+			break;
+			
+		case 3: 
+		position =2;
+		
+		break;
+		
+		case 4: 
+			position =3;
+			
+			break;
+			
+		case 5: 
+			position =4;
+			
+			//method to deactivate second spinner, and activate textview
+			
 			break;
 
 		}
