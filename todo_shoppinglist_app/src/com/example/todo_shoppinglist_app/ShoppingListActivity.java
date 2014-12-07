@@ -36,6 +36,8 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		// edit text field implementation
 		addOthers=(TextView)findViewById(R.id.other_edit_text);
 		addOthers.setHint("Type other stuff here");
+		
+		// clear text field and set first spinner to default value
 		clearBtn=(Button)findViewById(R.id.clear);
 		clearBtn.setOnClickListener(new OnClickListener() {
 			
@@ -43,6 +45,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 			public void onClick(View v) {
 				addOthers.setText("");
 				selectCategory.setSelection(0);
+				selectItem1.setEnabled(true);
 				
 			}
 		});
@@ -58,7 +61,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 	
 	
 
-	protected void chooseBakingItems() {
+	private void chooseBakingItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 		List<String> bakeryList = new ArrayList<String>();
 		bakeryList.add("Bread");
@@ -73,7 +76,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 
 	}
 
-	protected void chooseDairyItems() {
+	private void chooseDairyItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 
 		List<String> dairyList = new ArrayList<String>();
@@ -89,7 +92,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 
 	}
 
-	protected void chooseMeatItems() {
+	private void chooseMeatItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 
 		List<String> meatList = new ArrayList<String>();
@@ -102,7 +105,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		selectItem1.setAdapter(adapter3);
 	}
 
-	protected void chooseGreansItems() {
+	private void chooseGreansItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 
 		List<String> greensList = new ArrayList<String>();
@@ -116,7 +119,7 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		selectItem1.setAdapter(adapter4);
 	}
 
-	protected void chooseOtherItems() {
+	private void chooseOtherItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 		selectItem1.setEnabled(false);
 		addOthers.setEnabled(true);
