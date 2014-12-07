@@ -37,7 +37,7 @@
                   />
 
          <EditText
-             android:id="@+id/editText1"
+             android:id="@+id/other_edit_text"
              android:layout_width="match_parent"
              android:layout_height="0dp"
              android:layout_weight="1"
@@ -54,7 +54,7 @@
              android:columnCount="2" >
 
              <Button
-                 android:id="@+id/button1"
+                 android:id="@+id/clear"
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="wrap_content"
                  android:layout_column="0"
@@ -63,7 +63,7 @@
                  android:text="@string/clear_btn" />
 
              <Button
-                 android:id="@+id/button2"
+                 android:id="@+id/add"
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="wrap_content"
                  android:layout_column="1"
@@ -73,43 +73,20 @@
 
          </GridLayout>
 
-         <Button
-             android:id="@+id/button3"
-             android:layout_width="fill_parent"
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="wrap_content"
              android:layout_height="0dp"
              android:layout_weight="1"
-             android:layout_gravity="center_vertical"
-             android:text="@string/baking_btn" />
-         
-          <Button
-             android:id="@+id/button4"
-             android:layout_width="fill_parent"
-             android:layout_height="0dp"
-             android:layout_weight="1"
-             android:layout_gravity="center_vertical"
-             android:text="@string/dairy_btn" />
-           <Button
-             android:id="@+id/button5"
-             android:layout_width="fill_parent"
-             android:layout_height="0dp"
-             android:layout_weight="1"
-             android:layout_gravity="center_vertical"
-             android:text="@string/meat_btn" />
-            <Button
-             android:id="@+id/button6"
-             android:layout_width="fill_parent"
-             android:layout_height="0dp"
-             android:layout_weight="1"
-             android:layout_gravity="center_vertical"
-             android:text="@string/greens_btn" />
-              <Button
-             android:id="@+id/button7"
-             android:layout_width="fill_parent"
-             android:layout_height="0dp"
-             android:layout_weight="1"
-             android:layout_gravity="center_vertical"
-             android:text="@string/others_btn" />
+             android:text="@string/list"
+             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+         <ListView
+             android:id="@+id/listView1"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1" >
+         </ListView>
             
     </LinearLayout>
  

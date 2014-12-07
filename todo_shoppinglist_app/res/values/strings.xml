@@ -13,7 +13,9 @@
 	<string name="others_btn">Others</string>
 	<string name="add_btn">Add</string>
 	<string name="clear_btn">Clear</string>
+	<string name="list">My basket</string>
      <string-array name="category_array">
+        <item>Choose Category</item>
         <item>Baking</item>
         <item>Dairy</item>
         <item>Meat</item>

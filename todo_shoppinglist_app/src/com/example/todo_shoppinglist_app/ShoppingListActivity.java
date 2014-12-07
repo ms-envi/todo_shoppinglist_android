@@ -5,16 +5,23 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ShoppingListActivity extends Activity {
+public class ShoppingListActivity extends Activity implements OnItemSelectedListener{
 
-	private Spinner selectCategory, selectItem1, selectItem2,selectItem3,selectItem4, selectItem5 ;
+	private Spinner selectCategory, selectItem1, selectItem2, selectItem3,
+			selectItem4, selectItem5;
 	private Button addBtn, clearBtn, bakingBtn, dairyBtn, meatBtn, greensBtn,
 			othersBtn;
 	private TextView addOthers;
@@ -25,22 +32,33 @@ public class ShoppingListActivity extends Activity {
 		setContentView(R.layout.shopping_list);
 
 		addListenerOnSpinnerSelection();
-		chooseBakingItems();
-		chooseDairyItems();
-		chooseGreansItems();
-		chooseMeatItems();
-		chooseOtherItems();
+		
+		// edit text field implementation
+		addOthers=(TextView)findViewById(R.id.other_edit_text);
+		addOthers.setHint("Type other stuff here");
+		clearBtn=(Button)findViewById(R.id.clear);
+		clearBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				addOthers.setText("");
+				selectCategory.setSelection(0);
+				
+			}
+		});
+		
 
 	}
 
 	private void addListenerOnSpinnerSelection() {
 		selectCategory = (Spinner) findViewById(R.id.food_category);
 		selectCategory
-				.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-
+				.setOnItemSelectedListener (this);
 	}
+	
+	
 
-	public void chooseBakingItems() {
+	protected void chooseBakingItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 		List<String> bakeryList = new ArrayList<String>();
 		bakeryList.add("Bread");
@@ -54,54 +72,58 @@ public class ShoppingListActivity extends Activity {
 		selectItem1.setAdapter(adapter1);
 
 	}
-	
-	private void chooseDairyItems (){
-		selectItem2=(Spinner)findViewById(R.id.food_item);
-		
-		List <String> dairyList = new ArrayList<String>();
+
+	protected void chooseDairyItems() {
+		selectItem1 = (Spinner) findViewById(R.id.food_item);
+
+		List<String> dairyList = new ArrayList<String>();
 		dairyList.add("Milk");
 		dairyList.add("Cottage cheese");
 		dairyList.add("Processed cheese");
 		dairyList.add("Yogurt");
 		dairyList.add("Cream/kefir");
-		ArrayAdapter<String> adapter2= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dairyList);
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, dairyList);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		selectItem2.setAdapter(adapter2);
-		
+		selectItem1.setAdapter(adapter2);
+
 	}
-	
-	
-	private void chooseMeatItems() {
-		selectItem3=(Spinner)findViewById(R.id.food_item);
-		
-		List<String> meatList=new ArrayList<String>();
+
+	protected void chooseMeatItems() {
+		selectItem1 = (Spinner) findViewById(R.id.food_item);
+
+		List<String> meatList = new ArrayList<String>();
 		meatList.add("Chicken");
 		meatList.add("Turkey");
 		meatList.add("Beef");
-		ArrayAdapter<String> adapter3= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, meatList);
+		ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_dropdown_item, meatList);
 		adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		selectItem3.setAdapter(adapter3);
+		selectItem1.setAdapter(adapter3);
 	}
-	
-	private void chooseGreansItems(){
-		selectItem4=(Spinner)findViewById(R.id.food_item);
-	
+
+	protected void chooseGreansItems() {
+		selectItem1 = (Spinner) findViewById(R.id.food_item);
+
 		List<String> greensList = new ArrayList<String>();
 		greensList.add("Salats");
 		greensList.add("Carrot");
 		greensList.add("Apples");
 		greensList.add("Anything");
-		ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, greensList);
+		ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_dropdown_item, greensList);
 		adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		selectItem4.setAdapter(adapter4);
+		selectItem1.setAdapter(adapter4);
 	}
+
+	protected void chooseOtherItems() {
+		selectItem1 = (Spinner) findViewById(R.id.food_item);
+		selectItem1.setEnabled(false);
+		addOthers.setEnabled(true);
 	
-	private void chooseOtherItems(){
-		selectItem5=(Spinner)findViewById(R.id.food_item);
-		selectItem5.setClickable(false);
-		
-		
+
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -119,5 +141,73 @@ public class ShoppingListActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			long id) {
+		
+		findViewById(R.id.food_category).setEnabled(true);
+		addOthers.setHint("Type other stuff here");
+		addOthers.setEnabled(false);
+		
+		switch (parent.getPositionForView(view)) {
+		
+		
+
+		case 1:
+			position = 1;
+			// if i choose 'Bakery' then the dropdown list in spinner2
+			// should be
+			// load with list with bakery
+			// chooseBakingItems();
+
+			chooseBakingItems();
+			Toast.makeText(parent.getContext(), "Choose baking items",
+					Toast.LENGTH_LONG).show();
+
+			break;
+
+		case 2:
+			position = 2;
+
+			chooseDairyItems();
+			Toast.makeText(parent.getContext(), "Choose diary item",
+					Toast.LENGTH_LONG).show();
+			break;
+
+		case 3:
+			position = 3;
+			chooseMeatItems();
+			Toast.makeText(parent.getContext(), "Choose meat item",
+					Toast.LENGTH_LONG).show();
+
+			break;
+
+		case 4:
+			position = 4;
+			chooseGreansItems();
+			Toast.makeText(parent.getContext(), "Choose green item",
+					Toast.LENGTH_LONG).show();
+			break;
+
+		case 5:
+			position = 5;
+			chooseOtherItems();
+			Toast.makeText(parent.getContext(), "Type other item",
+					Toast.LENGTH_LONG).show();
+			break;
+
+		}
+
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+		// TODO Auto-generated method stub
+		
 	}
 }
