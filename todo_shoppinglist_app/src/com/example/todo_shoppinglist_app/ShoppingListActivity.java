@@ -13,18 +13,21 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ShoppingListActivity extends Activity implements OnItemSelectedListener{
+public class ShoppingListActivity extends Activity {
 
-	private Spinner selectCategory, selectItem1, selectItem2, selectItem3,
-			selectItem4, selectItem5;
+	private Spinner selectCategory, selectItem1;
 	private Button addBtn, clearBtn, bakingBtn, dairyBtn, meatBtn, greensBtn,
 			othersBtn;
 	private TextView addOthers;
+	private ListView lview;
+	private ArrayAdapter<String> adapterListView;
+	private ArrayList<String> itemList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +35,68 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		setContentView(R.layout.shopping_list);
 
 		addListenerOnSpinnerSelection();
-		
+
 		// edit text field implementation
-		addOthers=(TextView)findViewById(R.id.other_edit_text);
+		addOthers = (TextView) findViewById(R.id.other_edit_text);
 		addOthers.setHint("Type other stuff here");
-		
+
 		// clear text field and set first spinner to default value
-		clearBtn=(Button)findViewById(R.id.clear);
+		clearBtn = (Button) findViewById(R.id.clear);
 		clearBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				addOthers.setText("");
 				selectCategory.setSelection(0);
 				selectItem1.setEnabled(true);
-				
+
 			}
 		});
-		
 
+		// add button
+		addBtn = (Button) findViewById(R.id.button2);
+		addBtn.setOnClickListener(addListener);
+
+		// list view to display list
+		lview = (ListView) findViewById(R.id.listView1);
+
+		adapterListView = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, itemList);
+		itemList = new ArrayList<String>();
+
+		// end OnCreate
 	}
+
+	private OnClickListener addListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+
+			// Other is selected so i need to get text from edit text and pass
+			// to adapter and then to listview
+			if (selectCategory.getSelectedItemPosition() == 5) {
+
+				String otherItem = addOthers.getText().toString();
+				itemList.set(0, otherItem);
+				lview.setAdapter(adapterListView);
+				itemList.remove(0);
+
+			}
+
+			else {
+				itemList.set(0, selectItem1.getSelectedItem().toString());
+				lview.setAdapter(adapterListView);
+				itemList.remove(0);
+
+			}
+
+		}
+	};
 
 	private void addListenerOnSpinnerSelection() {
 		selectCategory = (Spinner) findViewById(R.id.food_category);
-		selectCategory
-				.setOnItemSelectedListener (this);
+		selectCategory.setOnItemSelectedListener(new CustomOnItemSelect());
 	}
-	
-	
 
 	private void chooseBakingItems() {
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
@@ -123,7 +160,6 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		selectItem1 = (Spinner) findViewById(R.id.food_item);
 		selectItem1.setEnabled(false);
 		addOthers.setEnabled(true);
-	
 
 	}
 
@@ -146,71 +182,69 @@ public class ShoppingListActivity extends Activity implements OnItemSelectedList
 		return super.onOptionsItemSelected(item);
 	}
 
+	private class CustomOnItemSelect implements OnItemSelectedListener {
 
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view,
+				int position, long id) {
 
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int position,
-			long id) {
-		
-		findViewById(R.id.food_category).setEnabled(true);
-		addOthers.setHint("Type other stuff here");
-		addOthers.setEnabled(false);
-		
-		switch (parent.getPositionForView(view)) {
-		
-		
+			findViewById(R.id.food_category).setEnabled(true);
+			addOthers.setHint("Type other stuff here");
+			addOthers.setEnabled(false);
 
-		case 1:
-			position = 1;
-			// if i choose 'Bakery' then the dropdown list in spinner2
-			// should be
-			// load with list with bakery
-			// chooseBakingItems();
+			switch (parent.getPositionForView(view)) {
 
-			chooseBakingItems();
-			Toast.makeText(parent.getContext(), "Choose baking items",
-					Toast.LENGTH_LONG).show();
+			case 1:
+				position = 1;
+				// if i choose 'Bakery' then the dropdown list in spinner2
+				// should be
+				// load with list with bakery
+				// chooseBakingItems();
 
-			break;
+				chooseBakingItems();
+				Toast.makeText(parent.getContext(), "Choose baking items",
+						Toast.LENGTH_LONG).show();
 
-		case 2:
-			position = 2;
+				break;
 
-			chooseDairyItems();
-			Toast.makeText(parent.getContext(), "Choose diary item",
-					Toast.LENGTH_LONG).show();
-			break;
+			case 2:
+				position = 2;
 
-		case 3:
-			position = 3;
-			chooseMeatItems();
-			Toast.makeText(parent.getContext(), "Choose meat item",
-					Toast.LENGTH_LONG).show();
+				chooseDairyItems();
+				Toast.makeText(parent.getContext(), "Choose diary item",
+						Toast.LENGTH_LONG).show();
+				break;
 
-			break;
+			case 3:
+				position = 3;
+				chooseMeatItems();
+				Toast.makeText(parent.getContext(), "Choose meat item",
+						Toast.LENGTH_LONG).show();
 
-		case 4:
-			position = 4;
-			chooseGreansItems();
-			Toast.makeText(parent.getContext(), "Choose green item",
-					Toast.LENGTH_LONG).show();
-			break;
+				break;
 
-		case 5:
-			position = 5;
-			chooseOtherItems();
-			Toast.makeText(parent.getContext(), "Type other item",
-					Toast.LENGTH_LONG).show();
-			break;
+			case 4:
+				position = 4;
+				chooseGreansItems();
+				Toast.makeText(parent.getContext(), "Choose green item",
+						Toast.LENGTH_LONG).show();
+				break;
+
+			case 5:
+				position = 5;
+				chooseOtherItems();
+				Toast.makeText(parent.getContext(), "Type other item",
+						Toast.LENGTH_LONG).show();
+				break;
+
+			}
 
 		}
 
-		
-	}
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			// TODO Auto-generated method stub
 
-	@Override
-	public void onNothingSelected(AdapterView<?> parent) {
-		// TODO Auto-generated method stub
-		
+		}
 	}
 }
