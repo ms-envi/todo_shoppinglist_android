@@ -22,8 +22,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class ShoppingListActivity extends Activity {
 
 	private Spinner selectCategory, selectItem1;
-	private Button addBtn, clearBtn, bakingBtn, dairyBtn, meatBtn, greensBtn,
-			othersBtn;
+	private Button addBtn, clearBtn;
 	private TextView addOthers;
 	private ListView lview;
 	private ArrayAdapter<String> adapterListView;
