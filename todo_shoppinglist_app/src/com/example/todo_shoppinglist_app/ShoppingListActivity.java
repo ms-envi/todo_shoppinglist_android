@@ -53,15 +53,14 @@ public class ShoppingListActivity extends Activity {
 		});
 
 		// add button
-		addBtn = (Button) findViewById(R.id.button2);
+		addBtn = (Button) findViewById(R.id.add);
 		addBtn.setOnClickListener(addListener);
 
 		// list view to display list
 		lview = (ListView) findViewById(R.id.listView1);
-
+		itemList = new ArrayList<String>();
 		adapterListView = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, itemList);
-		itemList = new ArrayList<String>();
 
 		// end OnCreate
 	}
@@ -75,22 +74,27 @@ public class ShoppingListActivity extends Activity {
 			// to adapter and then to listview
 			if (selectCategory.getSelectedItemPosition() == 5) {
 
-				String otherItem = addOthers.getText().toString();
-				itemList.set(0, otherItem);
+				addItem(addOthers.getText().toString());
 				lview.setAdapter(adapterListView);
-				itemList.remove(0);
+				addOthers.setText("");
 
 			}
 
 			else {
-				itemList.set(0, selectItem1.getSelectedItem().toString());
+				addItem(selectItem1.getSelectedItem().toString());
 				lview.setAdapter(adapterListView);
-				itemList.remove(0);
 
 			}
 
 		}
 	};
+
+	public void addItem(String item) {
+
+		itemList.add(item);
+		adapterListView.notifyDataSetChanged();
+
+	}
 
 	private void addListenerOnSpinnerSelection() {
 		selectCategory = (Spinner) findViewById(R.id.food_category);
