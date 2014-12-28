@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -27,6 +31,8 @@ public class ShoppingListActivity extends Activity {
 	private ListView lview;
 	private ArrayAdapter<String> adapterListView;
 	private ArrayList<String> itemList;
+	protected static final int CONTEXTMENU_EDIT = 1;
+	protected static final int CONTEXTMENU_DELETE = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +67,40 @@ public class ShoppingListActivity extends Activity {
 		itemList = new ArrayList<String>();
 		adapterListView = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, itemList);
+		registerForContextMenu(lview);
 
 		// end OnCreate
+
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+
+		super.onCreateContextMenu(menu, v, menuInfo);
+		menu.setHeaderTitle("Choose action");
+		menu.add(0, CONTEXTMENU_EDIT, 0, R.string.context_menu_edit);
+		menu.add(0, CONTEXTMENU_DELETE, 1, R.string.context_menu_delete);
+
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		int pos = info.position;
+		System.out.println(pos);
+		System.out.println(item.getTitle());
+		System.out.println(item.getItemId());
+		if (item.getItemId()==2) {
+			itemList.remove(pos);
+			adapterListView.notifyDataSetChanged();
+			
+		} else System.out.println("DUPA nie dzia³a");
+		
+
+		return true;
 	}
 
 	private OnClickListener addListener = new OnClickListener() {

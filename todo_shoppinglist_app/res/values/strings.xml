@@ -14,6 +14,8 @@
 	<string name="add_btn">Add</string>
 	<string name="clear_btn">Clear</string>
 	<string name="list">My basket</string>
+	<string name="context_menu_edit">Edit</string>
+	<string name="context_menu_delete">Delete</string>
      <string-array name="category_array">
         <item>Choose Category</item>
         <item>Baking</item>

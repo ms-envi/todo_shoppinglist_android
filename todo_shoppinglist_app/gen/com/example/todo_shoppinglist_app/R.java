@@ -55,6 +55,8 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int baking_btn=0x7f050005;
         public static final int clear_btn=0x7f05000b;
+        public static final int context_menu_delete=0x7f05000e;
+        public static final int context_menu_edit=0x7f05000d;
         public static final int dairy_btn=0x7f050006;
         public static final int greens_btn=0x7f050008;
         public static final int hello_world=0x7f050001;
