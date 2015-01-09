@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -33,10 +34,11 @@ public class ShoppingListActivity extends Activity {
 	private ArrayList<String> itemList;
 	protected static final int CONTEXTMENU_EDIT = 1;
 	protected static final int CONTEXTMENU_DELETE = 2;
-
+	private static final String TAG="ShoppingListActivity";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate (Bundle) called");
 		setContentView(R.layout.shopping_list);
 
 		addListenerOnSpinnerSelection();
@@ -78,6 +80,7 @@ public class ShoppingListActivity extends Activity {
 			ContextMenuInfo menuInfo) {
 
 		super.onCreateContextMenu(menu, v, menuInfo);
+		Log.d(TAG, "onCreateContextMenu called");
 		menu.setHeaderTitle("Choose action");
 		menu.add(0, CONTEXTMENU_EDIT, 0, R.string.context_menu_edit);
 		menu.add(0, CONTEXTMENU_DELETE, 1, R.string.context_menu_delete);
