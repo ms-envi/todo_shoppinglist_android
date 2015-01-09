@@ -7,10 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class MainActivity extends Activity {
-	Button btn1;
+	ImageButton btn1;
 	
 
     @Override
@@ -18,7 +19,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        btn1 = (Button)findViewById(R.id.button1);
+        btn1 = (ImageButton)findViewById(R.id.button1);
         
         btn1.setOnClickListener(new View.OnClickListener() {
 			

@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/main"
     tools:context="com.example.todo_shoppinglist_app.MainActivity" >
 
     <LinearLayout
@@ -22,29 +23,23 @@
             android:layout_weight="0.23"
             android:columnCount="1" >
 
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView1"
-                android:layout_column="0"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_row="0"
-                android:ems="20"
-                android:text="AutoCompleteTextView" />
-
-            <Button
+            <ImageButton
                 android:id="@+id/button1"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_column="0"
                 android:layout_gravity="left|top"
                 android:layout_row="1"
-                android:text="Shop" />
+                android:src="@drawable/shophxhdpi" 
+                android:contentDescription="@string/shop"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/button2"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_column="0"
                 android:layout_gravity="right|top"
                 android:layout_row="1"
-                android:text="Button" />
+                android:src="@drawable/todoxhdpi" 
+                android:contentDescription="@string/todo" />
 
           
 
