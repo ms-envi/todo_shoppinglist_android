@@ -30,22 +30,26 @@ public final class R {
         public static final int main=0x7f020002;
         public static final int pobrane=0x7f020003;
         public static final int shophxhdpi=0x7f020004;
-        public static final int todoxhdpi=0x7f020005;
-        public static final int todoxxhdpi=0x7f020006;
+        public static final int todo=0x7f020005;
+        public static final int todoxhdpi=0x7f020006;
+        public static final int todoxxhdpi=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
+        public static final int action_settings=0x7f09000e;
         public static final int add=0x7f090007;
+        public static final int add2=0x7f09000c;
         public static final int autoCompleteTextView1=0x7f09000a;
         public static final int button1=0x7f090000;
         public static final int button2=0x7f090001;
         public static final int clear=0x7f090006;
+        public static final int clear1=0x7f09000b;
         public static final int food_category=0x7f090003;
         public static final int food_item=0x7f090004;
         public static final int listView1=0x7f090009;
         public static final int listViewMain=0x7f090002;
         public static final int other_edit_text=0x7f090005;
         public static final int textView1=0x7f090008;
+        public static final int textView2=0x7f09000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -56,23 +60,26 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050004;
-        public static final int add_btn=0x7f05000c;
+        public static final int action_settings=0x7f050007;
+        public static final int add_btn=0x7f05000f;
         public static final int app_name=0x7f050000;
-        public static final int baking_btn=0x7f050007;
-        public static final int clear_btn=0x7f05000d;
-        public static final int context_menu_delete=0x7f050010;
-        public static final int context_menu_edit=0x7f05000f;
-        public static final int dairy_btn=0x7f050008;
-        public static final int greens_btn=0x7f05000a;
-        public static final int hello_world=0x7f050001;
-        public static final int list=0x7f05000e;
-        public static final int meat_btn=0x7f050009;
-        public static final int others_btn=0x7f05000b;
-        public static final int select_category=0x7f050005;
-        public static final int select_item=0x7f050006;
-        public static final int shop=0x7f050002;
-        public static final int todo=0x7f050003;
+        public static final int baking_btn=0x7f05000a;
+        public static final int clear_btn=0x7f050010;
+        public static final int context_menu_delete=0x7f050013;
+        public static final int context_menu_edit=0x7f050012;
+        public static final int dairy_btn=0x7f05000b;
+        public static final int greens_btn=0x7f05000d;
+        public static final int hello_world=0x7f050003;
+        public static final int list=0x7f050011;
+        public static final int meat_btn=0x7f05000c;
+        public static final int others_btn=0x7f05000e;
+        public static final int select_category=0x7f050008;
+        public static final int select_item=0x7f050009;
+        public static final int shop=0x7f050004;
+        public static final int shopping_list=0x7f050001;
+        public static final int todo=0x7f050005;
+        public static final int todo_list=0x7f050002;
+        public static final int todolist=0x7f050006;
     }
     public static final class style {
         /** 

@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.todo_shoppinglist_app.MainActivity" >
+    android:background="@drawable/todo"
+    tools:context="com.example.todo_shoppinglist_app.TodoListActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +20,8 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.23"
-            android:columnCount="1" >
+            android:layout_weight="0.26"
+            android:columnCount="2" >
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView1"
@@ -30,31 +31,41 @@
                 android:ems="20"
                 android:text="AutoCompleteTextView" />
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="130dp"
+           <Button
+                android:id="@+id/clear1"
+                style="@style/myStyle"
+                android:layout_width="wrap_content"
                 android:layout_column="0"
                 android:layout_gravity="left|top"
                 android:layout_row="1"
-                android:text="Button" />
+                android:text="@string/clear_btn" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="130dp"
+                android:id="@+id/add2"
+                style="@style/myStyle"
+                android:layout_width="207dp"
                 android:layout_column="0"
                 android:layout_gravity="right|top"
                 android:layout_row="1"
-                android:text="Button" />
-
-          
+                android:text="@string/add_btn" />
 
         </GridLayout>
-
+        
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/myStyle"
+            android:layout_width="122dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.40"
+            android:text="@string/todolist"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
         <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_weight="0.9" >
+            android:layout_weight="1.36" >
+
         </ListView>
 
     </LinearLayout>

@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 
 
 public class MainActivity extends Activity {
-	ImageButton btn1;
+	ImageButton mBtn1,mBtn2;
 	
 
     @Override
@@ -19,9 +19,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        btn1 = (ImageButton)findViewById(R.id.button1);
+        mBtn1 = (ImageButton)findViewById(R.id.button1);
+        mBtn2=(ImageButton)findViewById(R.id.button2);
         
-        btn1.setOnClickListener(new View.OnClickListener() {
+        mBtn1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -31,8 +32,20 @@ public class MainActivity extends Activity {
 			}
 		});
         
+        mBtn2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent todo = new Intent(getApplicationContext(), TodoListActivity.class);
+				startActivity(todo);
+				
+			}
+		});
+        
         
     }
+    
+   
 
 
     @Override
