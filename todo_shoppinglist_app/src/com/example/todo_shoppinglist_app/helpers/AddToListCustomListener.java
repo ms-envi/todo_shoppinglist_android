@@ -1,4 +1,4 @@
-package com.example.todo_shoppinglist_app;
+package com.example.todo_shoppinglist_app.helpers;
 
 import android.content.Context;
 import android.view.View;

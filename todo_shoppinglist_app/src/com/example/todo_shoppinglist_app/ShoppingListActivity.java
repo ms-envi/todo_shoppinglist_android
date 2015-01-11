@@ -3,6 +3,8 @@ package com.example.todo_shoppinglist_app;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.todo_shoppinglist_app.helpers.AddItems;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -34,7 +36,10 @@ public class ShoppingListActivity extends Activity {
 	private ArrayList<String> itemList;
 	protected static final int CONTEXTMENU_EDIT = 1;
 	protected static final int CONTEXTMENU_DELETE = 2;
-	private static final String TAG="ShoppingListActivity";
+	private static final String TAG = "ShoppingListActivity";
+	private Context mCtxShopping;
+	private AddItems addItems;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,6 +81,31 @@ public class ShoppingListActivity extends Activity {
 	}
 
 	@Override
+	public void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+	}
+
+	@Override
+	public void onRestart() {
+		super.onRestart();
+	}
+
+	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 
@@ -93,15 +123,13 @@ public class ShoppingListActivity extends Activity {
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
 				.getMenuInfo();
 		int pos = info.position;
-		System.out.println(pos);
-		System.out.println(item.getTitle());
-		System.out.println(item.getItemId());
-		if (item.getItemId()==2) {
+		if (item.getItemId() == 2) {
 			itemList.remove(pos);
 			adapterListView.notifyDataSetChanged();
-			
-		} else System.out.println("DUPA nie dzia³a");
-		
+
+		} else if (item.getItemId() == 1) {
+			// TODO: implement some method here
+		}
 
 		return true;
 	}
@@ -111,18 +139,23 @@ public class ShoppingListActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 
+			addItems = new AddItems(mCtxShopping);
+
 			// Other is selected so i need to get text from edit text and pass
 			// to adapter and then to listview
 			if (selectCategory.getSelectedItemPosition() == 5) {
 
-				addItem(addOthers.getText().toString());
+				addItems.addItem(addOthers.getText().toString(), itemList,
+						adapterListView);
 				lview.setAdapter(adapterListView);
 				addOthers.setText("");
 
 			}
 
 			else {
-				addItem(selectItem1.getSelectedItem().toString());
+				addItems.addItem(selectItem1.getSelectedItem().toString(),
+						itemList, adapterListView);
+
 				lview.setAdapter(adapterListView);
 
 			}
@@ -130,12 +163,13 @@ public class ShoppingListActivity extends Activity {
 		}
 	};
 
-	public void addItem(String item) {
-
-		itemList.add(item);
-		adapterListView.notifyDataSetChanged();
-
-	}
+	/**
+	 * public void addItem(String item) {
+	 * 
+	 * itemList.add(item); adapterListView.notifyDataSetChanged();
+	 * 
+	 * }
+	 **/
 
 	private void addListenerOnSpinnerSelection() {
 		selectCategory = (Spinner) findViewById(R.id.food_category);

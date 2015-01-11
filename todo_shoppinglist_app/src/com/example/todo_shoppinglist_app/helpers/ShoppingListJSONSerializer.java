@@ -1,4 +1,4 @@
-package com.example.todo_shoppinglist_app;
+package com.example.todo_shoppinglist_app.helpers;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
 
 import android.content.ClipData.Item;
 import android.content.Context;
