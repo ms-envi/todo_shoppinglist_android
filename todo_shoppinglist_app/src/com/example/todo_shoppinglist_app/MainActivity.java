@@ -3,21 +3,29 @@ package com.example.todo_shoppinglist_app;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 
 public class MainActivity extends Activity {
-	ImageButton mBtn1,mBtn2;
 	
+	private ImageButton mBtn1,mBtn2;
+	private DrawerLayout mDrawerLayout;
+	private ListView mListViewDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mListViewDrawer = (ListView) findViewById(R.id.left_drawer);
+        
         
         mBtn1 = (ImageButton)findViewById(R.id.button1);
         mBtn2=(ImageButton)findViewById(R.id.button2);
